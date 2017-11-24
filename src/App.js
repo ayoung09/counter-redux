@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import store from './store';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      counter: 0,
-    };
+    this.state = store.getState();
   }
 
   _handleIncrement() {
@@ -19,6 +18,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('state is: ', this.state)
     return (
       <div className="App">
         <header className="App-header">

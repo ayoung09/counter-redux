@@ -15,7 +15,7 @@ const decrementCounter = () => ({
 const initialState = { counter: 0 };
 
 //REDUCER
-export default reducer = (prevState = initialState, action) => {
+const reducer = (prevState = initialState, action) => {
     //because Redux state is immutable, we will first create the newState by creating a copy of prevState
     const newState = {...prevState};
 
@@ -30,3 +30,5 @@ export default reducer = (prevState = initialState, action) => {
             return prevState;
     }
 }
+
+export default reducer;
