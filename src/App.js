@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import store from './store';
+import { incrementCounter, decrementCounter } from './modules/counter.module';
 
 class App extends Component {
   constructor(props) {
@@ -9,16 +10,25 @@ class App extends Component {
     this.state = store.getState();
   }
 
+  //subscribe to the store and listen for updates to state
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() => this.setState(store.getState()))
+  }
+
+  //unsubscribe when unmouting
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   _handleIncrement() {
-    this.setState({ counter: this.state.counter + 1 })
+    store.dispatch(incrementCounter());
   }
 
   _handleDecrement() {
-    this.setState({ counter: this.state.counter - 1 })
+    store.dispatch(decrementCounter());
   }
 
   render() {
-    console.log('state is: ', this.state)
     return (
       <div className="App">
         <header className="App-header">

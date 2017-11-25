@@ -3,11 +3,11 @@ const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
 //ACTIONS
-const incrementCounter = () => ({
+export const incrementCounter = () => ({
     type: INCREMENT_COUNTER,
 });
 
-const decrementCounter = () => ({
+export const decrementCounter = () => ({
     type: DECREMENT_COUNTER,
 });
 
