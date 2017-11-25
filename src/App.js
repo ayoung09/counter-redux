@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import store from './store';
-import { incrementCounter, decrementCounter } from './modules/counter.module';
+import { incrementCounter, decrementCounter, resetCounter } from './modules/counter.module';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +28,10 @@ class App extends Component {
     store.dispatch(decrementCounter());
   }
 
+  _handleReset() {
+    store.dispatch(resetCounter());
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,6 +45,7 @@ class App extends Component {
         <p className="counter">{this.state.counter}</p>
         <button className="counter-btn" onClick={this._handleIncrement.bind(this)}>Increment</button>
         <button className="counter-btn" onClick={this._handleDecrement.bind(this)}>Decrement</button>
+        <button className="counter-btn" onClick={this._handleReset.bind(this)}>Reset</button>
       </div>
     );
   }

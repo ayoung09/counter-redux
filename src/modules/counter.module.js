@@ -1,8 +1,9 @@
-//CONSTANTS (i.e. ACTION TYPES)
+//ACTION TYPES
 const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+const RESET_COUNTER = 'RESET_COUNTER';
 
-//ACTIONS
+//ACTION CREATORS
 export const incrementCounter = () => ({
     type: INCREMENT_COUNTER,
 });
@@ -10,6 +11,10 @@ export const incrementCounter = () => ({
 export const decrementCounter = () => ({
     type: DECREMENT_COUNTER,
 });
+
+export const resetCounter = () => ({
+    type: RESET_COUNTER,
+})
 
 //INITIAL STATE
 const initialState = { counter: 0 };
@@ -25,6 +30,9 @@ const reducer = (prevState = initialState, action) => {
             return newState;
         case DECREMENT_COUNTER:
             newState.counter = prevState.counter - 1;
+            return newState;
+        case RESET_COUNTER:
+            newState.counter = 0;
             return newState;
         default:
             return prevState;
