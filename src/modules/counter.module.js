@@ -2,6 +2,7 @@
 const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 const RESET_COUNTER = 'RESET_COUNTER';
+const SET_COUNTER = 'SET_COUNTER';
 const SET_INCREMENT_VALUE = 'SET_INCREMENT_VALUE';
 
 //ACTION CREATORS
@@ -15,6 +16,11 @@ export const decrementCounter = () => ({
 
 export const resetCounter = () => ({
     type: RESET_COUNTER,
+})
+
+export const setCounter = (value) => ({
+    type: SET_COUNTER,
+    value
 })
 
 export const setIncrementValue = (value) => ({
@@ -39,6 +45,9 @@ const reducer = (prevState = initialState, action) => {
             return newState;
         case RESET_COUNTER:
             newState.counter = 0;
+            return newState;
+        case SET_COUNTER:
+            newState.counter = action.value;
             return newState;
         case SET_INCREMENT_VALUE:
             newState.incrementValue = action.value || prevState.incrementValue;

@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import store from './store';
 import { incrementCounter, decrementCounter, resetCounter } from './modules/counter.module';
+import SetCounterForm from './components/set-counter-form/set-counter-form';
 import SetIncrementForm from './components/set-increment-form/set-increment-form';
 
 class App extends Component {
@@ -46,7 +47,9 @@ class App extends Component {
         <p className="counter">{this.state.counter}</p>
         <button className="counter-btn" onClick={this._handleIncrement.bind(this)}>Increment</button>
         <button className="counter-btn" onClick={this._handleDecrement.bind(this)}>Decrement</button>
-        <button className="counter-btn" onClick={this._handleReset.bind(this)}>Reset</button>
+        <button className="counter-btn" onClick={this._handleReset.bind(this)}>Reset Counter</button>
+        <br />
+        <SetCounterForm />
         <br />
         <SetIncrementForm />
       </div>
