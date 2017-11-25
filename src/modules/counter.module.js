@@ -2,6 +2,7 @@
 const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 const RESET_COUNTER = 'RESET_COUNTER';
+const SET_INCREMENT_VALUE = 'SET_INCREMENT_VALUE';
 
 //ACTION CREATORS
 export const incrementCounter = () => ({
@@ -16,8 +17,13 @@ export const resetCounter = () => ({
     type: RESET_COUNTER,
 })
 
+export const setIncrementValue = (value) => ({
+    type: SET_INCREMENT_VALUE,
+    value,
+})
+
 //INITIAL STATE
-const initialState = { counter: 0 };
+const initialState = { counter: 0, incrementValue: 1 };
 
 //REDUCER
 const reducer = (prevState = initialState, action) => {
@@ -26,13 +32,16 @@ const reducer = (prevState = initialState, action) => {
 
     switch(action.type) {
         case INCREMENT_COUNTER:
-            newState.counter = prevState.counter + 1;
+            newState.counter = prevState.counter + newState.incrementValue;
             return newState;
         case DECREMENT_COUNTER:
-            newState.counter = prevState.counter - 1;
+            newState.counter = prevState.counter - newState.incrementValue;
             return newState;
         case RESET_COUNTER:
             newState.counter = 0;
+            return newState;
+        case SET_INCREMENT_VALUE:
+            newState.incrementValue = action.value || prevState.incrementValue;
             return newState;
         default:
             return prevState;
